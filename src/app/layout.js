@@ -23,8 +23,7 @@ export default function RootLayout({ children }) {
         className={`${InterBodyFont.variable} ${DeltaHeadingFont.variable} antialiased`}
       >
         {children}
-        <h1 className="text-3xl font-display text-accent">heading</h1>
-        <p className="text-accent">Lorem ipsumm</p>
+      
       </body>
     </html>
   );
