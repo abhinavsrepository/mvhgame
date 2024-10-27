@@ -1,13 +1,6 @@
 import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
 import Footer from "@/components/Footer";
-export const metadat ={
-    title :"MVH game ",
-    description:"play and win",
-}
-
-
-
 
 
 export default function MainLayout({ children }) {

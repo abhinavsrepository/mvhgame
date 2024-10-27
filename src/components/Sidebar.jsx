@@ -1,5 +1,5 @@
-export default async function Sidebar() {
+export default  function Sidebar() {
     return (
-        <aside className="text-3xl font-bold">Sidebar</aside>
+        <aside className="hidden">Sidebar</aside>
     );
 }
