@@ -1,23 +1,12 @@
-import { PrismaClient } from "@prisma/client";
 import Image from "next/image";
-const prisma = new PrismaClient();
-async function getData(q) {
-  const games = await prisma.game.findMany({
-    where: {
-      title: {
-        contains: q,
-      },
-    },
-    take: 100,
-  });
-  return games;
-}
+import { getSearchResults } from "@/lib/gameQueries";
+
 export default async function Page(req) {
   const searchQuery = req.searchParams.q;
   
   let games;
   if (searchQuery) {
-      games =await  getData(searchQuery);
+      games =await  getSearchResults(searchQuery);
   }
   else {
     games=[];
@@ -32,10 +21,15 @@ export default async function Page(req) {
       </h1>
       <div className="text-accent mb-4">{`${games?.length} results`}</div>
       <ul>{games. map((game)=>(
-        <li key={game.id}>
-          <a href={`/game/${game.slug}`} className="flex ga-4 bg-main hover:bg-accent-secondary p-4 rounded-lg">
+        <li key={game.id} className="mb-2">
+          <a href={`/game/${game.slug}`} className="flex ga-4 bg-main hover:bg-accent-secondary p-4 rounded-lg gap-4">
           <Image src={`/game/${game.image}`} alt ={game.title}
-          className="w-2/6 lg:w-1/6"/>
+          className="w-2/6 lg:w-1/6 rounded-md" width ={300} height={300}
+          quality ={50}/>
+          <div className="flex flex-col gap-4" >
+            <h2 className="text-xl">{game.title}</h2>
+            <p>{game.description}</p>
+          </div>
           </a>
         </li>
 
