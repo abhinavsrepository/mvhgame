@@ -13,7 +13,7 @@ export async function getCategoryMenu(){
 
 
 
-export async function CategoryMenu(params){
+export async function getSearchResults(params){
     return await prisma.game.findMany({
         where: {
           title: {
