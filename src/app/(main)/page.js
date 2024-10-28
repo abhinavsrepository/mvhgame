@@ -1,7 +1,9 @@
-import Image from "next/image";
+import HeroSlider from "@/components/Sliders/HeroSlider";
 
 export default function Home() {
   return (
-    <p>Hello</p>
+   <>
+   <HeroSlider/>
+   </>
   );
 }
