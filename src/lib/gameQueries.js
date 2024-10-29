@@ -2,6 +2,24 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma =new PrismaClient();
 
+export async function getGamesBySelectedCategories({categoryIds}){
+  return await prisma.category.findMany({
+    where:{
+      id:{
+        in:categoryIds
+      },
+      games:
+    }
+  })
+}
+
+
+
+
+
+
+
+
 export async function getGamesByCategoryId(categoryId){
   return await prisma.category.findUnique({
     where: {
