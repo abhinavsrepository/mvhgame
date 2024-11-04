@@ -8,7 +8,28 @@ export async function getGamesBySelectedCategories({categoryIds}){
       id:{
         in:categoryIds
       },
-      games:
+      games:{
+        some:{
+          published:true
+        }
+      }
+    },select:{
+      title:true,
+      slug:true,
+      games:{
+        where:{
+          published:true
+        },
+        select:{
+          id:true,
+          title:true,
+          slug:true,
+          description:true,
+          game_url:true,
+          created_at:true
+
+        }
+      }
     }
   })
 }

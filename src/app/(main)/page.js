@@ -1,7 +1,7 @@
 import GameCategory from "@/components/GameCategory";
 import CategorySlider from "@/components/Sliders/CategorySlider";
 import HeroSlider from "@/components/Sliders/HeroSlider";
-import { getGameCategories ,getGamesByCategoryId} from "@/lib/gameQueries";
+import { getGameCategories ,getGamesByCategoryId,getGamesBySelectedCategories} from "@/lib/gameQueries";
 
 
 
