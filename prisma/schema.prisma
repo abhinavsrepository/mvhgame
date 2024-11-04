@@ -13,7 +13,7 @@ datasource db {
 model Game {
   id          Int        @id @default(autoincrement())
   title       String
-  slug        String
+  slug        String     @unique
   description String
   image       String
   game_url    String
@@ -29,4 +29,14 @@ model Category {
   core  String
   image String @default("default_image.png")
   games Game[]
+}
+
+model User {
+  id Int @id @default(autoincrement())
+  name String?
+  email String @unique
+  password String
+  role String?
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
 }
