@@ -7,19 +7,27 @@ import { getGameCategories ,getGamesByCategoryId,getGamesBySelectedCategories} f
 
 
 export default async function Home() {
-  const allCategories =await getGameCategories();
-  const category =await getGamesByCategoryId(1);
-  const nintendo =await getGamesByCategoryId(5)
+  // const allCategories =await getGameCategories();
+  // const category =await getGamesByCategoryId(1);
+  const [allCategories,category ] =await Promise.all([
+    getGameCategories(),
+    getGamesByCategoryId(1)
+
+  ])
+  
 
   const selectedCategoryIds =[1,2,5];
-  const multipleCategories = await getGamesBySelectedCategories(selectedCategoryIds)
+  const multipleCategories = await getGamesBySelectedCategories(selectedCategoryIds);
 
   return (
    <>
    <HeroSlider/>
    <CategorySlider categories ={allCategories}/>
    <GameCategory category={category}/>
-   <GameCategory category={nintendo}/>
+   {/* <GameCategory category={multipleCategories[0]}/> */}
+
+  
+   {/* <pre>{JSON.stringify(multipleCategories,null,2)}</pre> */}
 
  
 
